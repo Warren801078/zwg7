@@ -1,0 +1,26 @@
+.split-parent {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.split-char,
+.split-word,
+.split-line {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity, filter;
+}
+
+.split-line {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-char,
+  .split-word,
+  .split-line {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

@@ -1096,3 +1096,15 @@
   line-height: 1;
   font-weight: 900;
 }
+
+/* SplitText contact title */
+.contact-title {
+  display: grid;
+  gap: 6px;
+}
+
+.contact-title-line {
+  display: block !important;
+  width: fit-content;
+  max-width: 100%;
+}

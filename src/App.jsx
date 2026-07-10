@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Grainient from "./Grainient";
 import BorderGlow from "./BorderGlow";
+import SplitText from "./SplitText";
 
 const profile = {
   name: "Zzz",
@@ -383,8 +384,30 @@ function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="page-shell contact-inner">
-        <p>{profile.cnName}</p>
-        <h2>让设计成为运营的表达窗口，让AI成为效率的放大器。</h2>
+        <h2 className="contact-title" aria-label={"\u8ba9\u8bbe\u8ba1\u6210\u4e3a\u8fd0\u8425\u7684\u8868\u8fbe\u7a97\u53e3\uff0c\u8ba9AI\u6210\u4e3a\u6548\u7387\u7684\u653e\u5927\u5668\u3002"}>
+          <SplitText
+            text={"\u8ba9\u8bbe\u8ba1\u6210\u4e3a\u8fd0\u8425\u7684\u8868\u8fbe\u7a97\u53e3\uff0c"}
+            className="contact-title-line"
+            delay={42}
+            duration={1.1}
+            ease="power3.out"
+            splitType="chars"
+            threshold={0.2}
+            rootMargin="-90px"
+            tag="span"
+          />
+          <SplitText
+            text={"\u8ba9AI\u6210\u4e3a\u6548\u7387\u7684\u653e\u5927\u5668\u3002"}
+            className="contact-title-line"
+            delay={42}
+            duration={1.1}
+            ease="power3.out"
+            splitType="chars"
+            threshold={0.2}
+            rootMargin="-90px"
+            tag="span"
+          />
+        </h2>
         <div className="contact-grid">
           <a href={`mailto:${profile.email}`} aria-label={`发送邮件给${profile.cnName}`}>
             <span>Email</span>
@@ -427,6 +450,18 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
     const scrollToCurrentHash = () => {
       const id = window.location.hash.slice(1);
       if (!id) return;
@@ -437,7 +472,6 @@ export default function App() {
       });
     };
 
-    scrollToCurrentHash();
     window.addEventListener("hashchange", scrollToCurrentHash);
     return () => window.removeEventListener("hashchange", scrollToCurrentHash);
   }, []);
