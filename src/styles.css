@@ -1109,3 +1109,561 @@
   width: fit-content;
   max-width: 100%;
 }
+
+
+/* Mobile composition */
+@media (max-width: 767px) {
+  :root {
+    --pad: 18px;
+  }
+
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #070202;
+  }
+
+  .page-shell {
+    width: min(100% - 36px, 440px);
+  }
+
+  .section,
+  .contact-section {
+    scroll-margin-top: 78px;
+  }
+
+  .site-header,
+  .site-header.is-compact {
+    top: 10px;
+    width: calc(100vw - 20px);
+    height: 56px;
+    padding: 0 10px;
+    border: 1px solid rgba(248, 248, 244, 0.18);
+    border-radius: 999px;
+    background: rgba(5, 5, 5, 0.76);
+    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand,
+  .site-header.is-compact .brand {
+    margin-left: 0;
+    flex: 0 0 auto;
+  }
+
+  .brand img,
+  .site-header.is-compact .brand img {
+    width: 78px;
+    height: 28px;
+  }
+
+  nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    gap: 7px;
+    font-size: 10px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  nav a::before,
+  nav a::after {
+    display: none;
+  }
+
+  .header-contact {
+    min-width: 52px;
+    height: 32px;
+    border-radius: 999px;
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero::before {
+    height: 12px;
+    background: linear-gradient(90deg, var(--accent) 0 18%, transparent 18% 52%, var(--accent) 52% 76%, transparent 76% 100%);
+  }
+
+  .hero-media::before {
+    background:
+      radial-gradient(circle at 68% 32%, rgba(255, 43, 31, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.22), rgba(5, 5, 5, 0.86)),
+      linear-gradient(90deg, rgba(4, 4, 4, 0.82), rgba(4, 4, 4, 0.22) 54%, rgba(4, 4, 4, 0.72));
+  }
+
+  .hero-video-bg {
+    object-position: center;
+    filter: saturate(0.72) contrast(1.12) brightness(0.68);
+  }
+
+  .motion-field {
+    background:
+      repeating-linear-gradient(90deg, rgba(248, 248, 244, 0.055) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, rgba(248, 248, 244, 0.03) 0 1px, transparent 1px 58px);
+  }
+
+  .hero-poster {
+    min-height: 100svh;
+    padding: 86px 0 26px;
+  }
+
+  .hero-bg-word {
+    top: 82px;
+    left: -6px;
+    right: auto;
+    font-size: clamp(78px, 24vw, 110px);
+    line-height: 0.86;
+  }
+
+  .hero-index-card {
+    left: 0;
+    bottom: 320px;
+    gap: 7px;
+  }
+
+  .hero-index-card span {
+    font-size: 32px;
+  }
+
+  .hero-index-card strong {
+    font-size: 76px;
+  }
+
+  .hero-index-card p {
+    font-size: 15px;
+  }
+
+  .hero-title-block {
+    left: 0;
+    right: 0;
+    bottom: 188px;
+    width: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 12.5vw, 54px);
+    line-height: 0.98;
+    text-shadow: 0 12px 34px rgba(0, 0, 0, 0.58);
+  }
+
+  .hero h1 span {
+    white-space: nowrap;
+  }
+
+  .hero-bottom-row {
+    left: 0;
+    right: 0;
+    bottom: 26px;
+    display: grid;
+    gap: 16px;
+    padding-right: 0;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .primary-button {
+    min-width: 0;
+    width: 100%;
+    height: 58px;
+    padding: 0 20px;
+    font-size: 14px;
+    box-shadow: 0 20px 58px rgba(0, 0, 0, 0.42);
+  }
+
+  .text-button {
+    font-size: 13px;
+  }
+
+  .hero-summary {
+    display: block;
+    width: 100%;
+  }
+
+  .hero-summary strong {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .hero-summary p {
+    max-width: 300px;
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .experience-timeline-section,
+  .projects-section,
+  .strengths-section,
+  .contact-section {
+    min-height: auto;
+    display: block;
+    padding: 92px 0 78px;
+  }
+
+  .portfolio-main::before {
+    background:
+      radial-gradient(circle at 78% 10%, rgba(255, 43, 31, 0.23), transparent 34%),
+      radial-gradient(circle at 18% 52%, rgba(131, 106, 106, 0.2), transparent 38%),
+      linear-gradient(90deg, rgba(248, 248, 244, 0.04) 0 1px, transparent 1px 64px),
+      linear-gradient(180deg, rgba(248, 248, 244, 0.035) 0 1px, transparent 1px 72px);
+  }
+
+  .experience-timeline {
+    gap: 28px;
+  }
+
+  .experience-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .experience-title-block > span,
+  .experience-side-note strong {
+    font-size: 11px;
+  }
+
+  .experience-title-block h2 {
+    margin-top: 14px;
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 0.98;
+  }
+
+  .experience-title-block p {
+    width: 100%;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .experience-side-note {
+    justify-self: stretch;
+    max-width: none;
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .experience-side-note strong,
+  .experience-side-note span {
+    white-space: normal;
+  }
+
+  .experience-side-note span {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .experience-metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+    padding: 2px 0 24px;
+  }
+
+  .experience-metric,
+  .experience-metric:first-child {
+    min-height: 74px;
+    padding: 0;
+  }
+
+  .experience-metric strong {
+    min-height: 38px;
+    font-size: 42px;
+  }
+
+  .experience-metric span {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+  .career-timeline-board {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    min-height: 0;
+    margin-top: 6px;
+    overflow: visible;
+  }
+
+  .career-step,
+  .career-step:first-child {
+    min-height: 0;
+    padding: 0 0 22px 22px;
+    border-left: 1px solid rgba(255, 43, 31, 0.55);
+  }
+
+  .career-step::before {
+    top: 7px;
+    left: -1px;
+    right: auto;
+    width: 18px;
+    height: 2px;
+  }
+
+  .career-step:not(:first-child)::after {
+    display: none;
+  }
+
+  .career-step-year,
+  .career-step-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .career-step-year {
+    display: block;
+    margin: 0 0 12px;
+    font-size: 12px;
+  }
+
+  .career-step-content h3 {
+    font-size: 19px;
+    line-height: 1.25;
+  }
+
+  .career-step-content p {
+    display: block;
+    margin-top: 10px;
+    overflow: visible;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .projects-section {
+    padding-top: 88px;
+  }
+
+  .projects-heading {
+    min-height: 0;
+    display: block;
+    padding: 0 0 14px;
+  }
+
+  .projects-heading-meta {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .projects-heading-meta p,
+  .projects-edition {
+    text-align: left;
+  }
+
+  .projects-heading-meta p {
+    max-width: 320px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .projects-gallery {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 28px;
+    min-height: 0;
+  }
+
+  .projects-sidebar {
+    padding: 0;
+    gap: 16px;
+  }
+
+  .projects-sidebar h2 {
+    font-size: 44px;
+    line-height: 0.94;
+  }
+
+  .projects-sidebar > div {
+    margin-top: 0;
+  }
+
+  .projects-sidebar strong {
+    font-size: 14px;
+    line-height: 1.16;
+  }
+
+  .projects-showcase .project-list {
+    display: flex;
+    gap: 14px;
+    width: calc(100vw - var(--pad));
+    margin-right: calc(var(--pad) * -1);
+    padding: 0 var(--pad) 18px 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .projects-showcase .project-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-showcase .project-card {
+    flex: 0 0 min(82vw, 360px);
+    scroll-snap-align: start;
+  }
+
+  .projects-showcase .project-image {
+    min-height: 0;
+    aspect-ratio: 0.78;
+  }
+
+  .projects-showcase .project-image img {
+    object-position: center;
+  }
+
+  .projects-showcase .project-image > span {
+    right: 12px;
+    bottom: 12px;
+    font-size: 9px;
+  }
+
+  .projects-showcase .project-copy {
+    padding: 13px 0 0;
+  }
+
+  .project-meta {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .strengths-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .section-heading,
+  .sticky-heading {
+    position: relative;
+    top: auto;
+    max-width: none;
+  }
+
+  .section-heading h2 {
+    margin-top: 14px;
+    font-size: clamp(33px, 9.2vw, 40px);
+    line-height: 1.06;
+  }
+
+  .strength-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .strength-card-content {
+    min-height: 216px;
+    padding: 24px;
+  }
+
+  .strength-card h3 {
+    margin-top: 44px;
+    font-size: 25px;
+  }
+
+  .strength-card p {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .contact-section {
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    padding: 96px 0 56px;
+  }
+
+  .contact-section::before {
+    left: -14vw;
+    top: 12vh;
+    font-size: 42vw;
+  }
+
+  .contact-title {
+    gap: 8px;
+  }
+
+  .contact-inner h2 {
+    margin-top: 0;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.08;
+  }
+
+  .contact-title-line {
+    width: 100%;
+    overflow: visible !important;
+  }
+
+  .contact-title-line > span {
+    display: inline !important;
+    white-space: normal !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 46px;
+    border: 0;
+    background: transparent;
+  }
+
+  .contact-grid a {
+    min-height: 92px;
+    padding: 20px;
+    border: 1px solid rgba(248, 248, 244, 0.18);
+    background: rgba(10, 10, 10, 0.76);
+  }
+
+  .contact-grid strong {
+    overflow-wrap: anywhere;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 374px) {
+  .brand img,
+  .site-header.is-compact .brand img {
+    width: 68px;
+  }
+
+  nav {
+    gap: 5px;
+    font-size: 9px;
+  }
+
+  .header-contact {
+    min-width: 48px;
+    font-size: 10px;
+  }
+
+  .hero-index-card {
+    bottom: 300px;
+  }
+
+  .hero-title-block {
+    bottom: 170px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+}
+
