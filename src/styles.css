@@ -2520,3 +2520,29 @@ nav a[href="#contact"] {
     transform-origin: center;
   }
 }
+
+/* Lock mobile background to the viewport after leaving the hero */
+@media (max-width: 767px) {
+  .site-grainient {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    margin: 0;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+    z-index: 0;
+    transition: opacity 220ms ease, visibility 220ms ease;
+  }
+
+  .portfolio-main:not(.is-past-hero) .site-grainient {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .portfolio-main.is-past-hero .site-grainient {
+    visibility: visible;
+    opacity: 0.98;
+  }
+}

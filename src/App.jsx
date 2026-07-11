@@ -445,6 +445,7 @@ function Contact() {
 
 export default function App() {
   const [isHeaderCompact, setIsHeaderCompact] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
 
   useEffect(() => {
     let frame = 0;
@@ -452,6 +453,7 @@ export default function App() {
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
         setIsHeaderCompact(window.scrollY > 48);
+        setIsPastHero(window.scrollY > window.innerHeight * 0.72);
       });
     };
 
@@ -496,7 +498,7 @@ export default function App() {
     <>
       <Header isCompact={isHeaderCompact} />
       <Hero />
-      <main className="portfolio-main">
+      <main className={`portfolio-main${isPastHero ? " is-past-hero" : ""}`}>
         <Grainient
           className="site-grainient"
           color1="#371919"
