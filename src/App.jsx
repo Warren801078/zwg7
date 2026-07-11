@@ -206,7 +206,7 @@ function Header({ isCompact }) {
       <a className="header-contact" href="#contact">
         联系我
       </a>
-      <a className="dock-top-button" href="#home" aria-label="回到顶部">顶部</a>
+      <a className={`dock-top-button${isCompact ? " is-visible" : ""}`} href="#home" aria-label="回到顶部">顶部</a>
     </header>
   );
 }
