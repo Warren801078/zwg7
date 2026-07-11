@@ -2592,3 +2592,18 @@ nav a[href="#contact"] {
     font-size: clamp(46px, 3.35vw, 56px);
   }
 }
+
+
+/* Let desktop career notes display in full */
+@media (min-width: 768px) {
+  .career-timeline-board {
+    min-height: 430px;
+    overflow: visible;
+  }
+
+  .career-step-content p {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
