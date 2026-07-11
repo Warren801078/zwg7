@@ -2097,3 +2097,25 @@ nav a[href="#contact"] {
     font-size: 11px;
   }
 }
+
+/* Final mobile dock icon scale and active color */
+@media (max-width: 767px) {
+  .site-header nav a .dock-icon {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+    mix-blend-mode: normal;
+  }
+
+  .site-header nav a.is-active .dock-icon {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(93%) saturate(4574%) hue-rotate(354deg) brightness(101%) contrast(101%);
+  }
+}
+
+@media (max-width: 374px) {
+  .site-header nav a .dock-icon {
+    width: 23px;
+    height: 23px;
+    flex-basis: 23px;
+  }
+}
