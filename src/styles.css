@@ -2119,3 +2119,13 @@ nav a[href="#contact"] {
     flex-basis: 23px;
   }
 }
+
+/* Keep dock icons as transparent glyphs without an element frame */
+@media (max-width: 767px) {
+  .site-header nav a .dock-icon {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}
