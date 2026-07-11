@@ -2129,3 +2129,33 @@ nav a[href="#contact"] {
     box-shadow: none;
   }
 }
+
+/* Desktop navigation: keep icon and label in one horizontal row */
+@media (min-width: 768px) {
+  .site-header nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+
+  .site-header nav a .dock-icon {
+    display: block;
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    object-fit: contain;
+    mix-blend-mode: normal;
+    border: 0;
+    outline: 0;
+    background: transparent;
+  }
+
+  .site-header nav a.is-active {
+    color: var(--accent);
+  }
+
+  .site-header nav a.is-active .dock-icon {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(93%) saturate(4574%) hue-rotate(354deg) brightness(101%) contrast(101%);
+  }
+}
