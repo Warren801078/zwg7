@@ -2036,3 +2036,64 @@ nav a[href="#contact"] {
 /* Remove the white rule under project cards */
 .projects-showcase .project-copy { border-top: 0; }
 
+
+/* Mobile QA refinements */
+@media (max-width: 767px) {
+  .site-header nav a .dock-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: none;
+  }
+
+  .site-header nav a.is-active .dock-icon {
+    filter: sepia(1) saturate(12) hue-rotate(320deg) brightness(1.2);
+  }
+
+  .strength-grid .strength-card,
+  .strength-grid .strength-card.border-glow-card,
+  .strength-grid .strength-card .border-glow-inner {
+    min-height: 0 !important;
+    height: 176px !important;
+  }
+
+  .strength-card-content {
+    min-height: 0 !important;
+    height: 176px !important;
+    padding: 12px !important;
+  }
+
+  .strength-card p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .dock-top-button {
+    background: rgba(54, 20, 20, 0.84);
+    border-color: rgba(248, 248, 244, 0.22);
+    color: rgba(248, 248, 244, 0.82);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+  }
+}
+
+@media (max-width: 374px) {
+  .site-header nav a .dock-icon {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .strength-grid .strength-card,
+  .strength-grid .strength-card.border-glow-card,
+  .strength-grid .strength-card .border-glow-inner,
+  .strength-card-content {
+    height: 168px !important;
+  }
+
+  .strength-card p {
+    font-size: 11px;
+  }
+}

@@ -198,7 +198,7 @@ function Header({ isCompact }) {
       <nav aria-label="主导航">
         {navItems.map((item) => (
           <a key={item.href} href={item.href} className={activeHash === item.href ? "is-active" : ""} aria-current={activeHash === item.href ? "page" : undefined}>
-            {item.icon && <span className="dock-icon" style={{ "--dock-icon": `url(${item.icon})` }} aria-hidden="true" />}
+            {item.icon && <img className="dock-icon" src={item.icon} alt="" aria-hidden="true" />}
             {item.label}
           </a>
         ))}
