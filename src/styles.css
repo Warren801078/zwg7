@@ -2462,3 +2462,37 @@ nav a[href="#contact"] {
     background-repeat: no-repeat;
   }
 }
+
+/* Mobile uses the same PC Grainient canvas, rotated without distortion */
+@media (max-width: 767px) {
+  .site-grainient {
+    display: block !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    min-height: 0;
+    margin: 0;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+    z-index: 0;
+    opacity: 0.98;
+    pointer-events: none;
+  }
+
+  .site-grainient canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .portfolio-main::before,
+  .portfolio-main::after {
+    display: none !important;
+  }
+
+  .portfolio-main .section,
+  .portfolio-main .contact-section {
+    background: transparent !important;
+  }
+}
