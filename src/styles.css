@@ -2546,3 +2546,26 @@ nav a[href="#contact"] {
     opacity: 0.98;
   }
 }
+
+/* Correct mobile background sizing: rotate once, fill the full viewport */
+@media (max-width: 767px) {
+  .site-grainient {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    margin: 0;
+    overflow: hidden;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+  }
+
+  .site-grainient canvas {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none;
+  }
+}
