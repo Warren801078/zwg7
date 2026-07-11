@@ -1667,3 +1667,239 @@
   }
 }
 
+
+/* Mobile dock and portrait refinements */
+nav a[href="#contact"] {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .section,
+  .contact-section {
+    scroll-margin-top: 18px;
+    scroll-margin-bottom: 96px;
+  }
+
+  .site-header,
+  .site-header.is-compact {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 76px;
+    padding: 0;
+    transform: none;
+    justify-content: center;
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(180deg, rgba(5, 5, 5, 0.68), rgba(5, 5, 5, 0));
+    box-shadow: none;
+    backdrop-filter: none;
+    pointer-events: none;
+  }
+
+  .brand,
+  .site-header.is-compact .brand {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+    pointer-events: auto;
+  }
+
+  .brand img,
+  .site-header.is-compact .brand img {
+    width: 108px;
+    height: 38px;
+    object-position: center;
+  }
+
+  .header-contact {
+    display: none;
+  }
+
+  .site-header nav {
+    position: fixed;
+    left: 50%;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 92;
+    width: min(360px, calc(100vw - 28px));
+    height: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    padding: 6px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(248, 248, 244, 0.18);
+    border-radius: 999px;
+    background: rgba(7, 5, 5, 0.82);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.44);
+    backdrop-filter: blur(22px);
+    pointer-events: auto;
+  }
+
+  .site-header nav a {
+    min-width: 0;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: rgba(248, 248, 244, 0.88);
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .site-header nav a[href="#home"] {
+    display: none;
+  }
+
+  .site-header nav a[href="#contact"] {
+    display: inline-flex;
+  }
+
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible {
+    color: var(--paper);
+    background: rgba(255, 43, 31, 0.18);
+  }
+
+  .hero-video-bg {
+    top: 50%;
+    left: 50%;
+    width: 100svh;
+    height: 100vw;
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.12);
+    object-position: center;
+  }
+
+  .hero-bg-word {
+    top: 76px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: transparent;
+    font-size: clamp(88px, 27vw, 108px);
+    line-height: 0.78;
+    white-space: pre-line;
+  }
+
+  .hero-bg-word::before {
+    content: "PORT\A FOLIO";
+    color: var(--accent);
+    white-space: pre-line;
+  }
+
+  .site-grainient,
+  .portfolio-main::before,
+  .portfolio-main::after {
+    display: none;
+  }
+
+  .portfolio-main {
+    overflow: visible;
+    background: #120707;
+  }
+
+  .portfolio-main .section,
+  .portfolio-main .contact-section {
+    background:
+      radial-gradient(circle at 82% 10%, rgba(255, 43, 31, 0.24), transparent 34%),
+      radial-gradient(circle at 14% 62%, rgba(131, 106, 106, 0.22), transparent 40%),
+      linear-gradient(90deg, rgba(248, 248, 244, 0.04) 0 1px, transparent 1px 64px),
+      linear-gradient(180deg, rgba(248, 248, 244, 0.035) 0 1px, transparent 1px 72px),
+      linear-gradient(135deg, #270707, #6a0000 52%, #1a0505);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .projects-section {
+    padding-top: 78px;
+  }
+
+  .projects-heading {
+    margin-top: -24px;
+    padding-bottom: 18px;
+  }
+
+  .projects-gallery {
+    margin-top: 52px;
+  }
+
+  .strength-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .strength-card-content {
+    min-height: 168px;
+    padding: 15px;
+  }
+
+  .strength-card-content > span {
+    font-size: 10px;
+  }
+
+  .strength-card h3 {
+    margin-top: 28px;
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .strength-card p {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .contact-section::before {
+    content: "PORT\A FOLIO";
+    left: 18px;
+    top: 68px;
+    width: calc(100vw - 36px);
+    font-size: clamp(76px, 24vw, 104px);
+    line-height: 0.8;
+    white-space: pre-line;
+  }
+}
+
+@media (max-width: 374px) {
+  .brand img,
+  .site-header.is-compact .brand img {
+    width: 96px;
+    height: 34px;
+  }
+
+  .site-header nav {
+    width: calc(100vw - 20px);
+    height: 58px;
+  }
+
+  .site-header nav a {
+    height: 44px;
+    font-size: 11px;
+  }
+
+  .hero-bg-word {
+    font-size: 88px;
+  }
+
+  .strength-card-content {
+    min-height: 158px;
+    padding: 12px;
+  }
+
+  .strength-card h3 {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+
+  .strength-card p {
+    font-size: 10px;
+  }
+}

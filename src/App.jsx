@@ -17,6 +17,7 @@ const navItems = [
   { label: "经历", href: "#experience" },
   { label: "作品", href: "#projects" },
   { label: "优势", href: "#strengths" },
+  { label: "联系", href: "#contact" },
 ];
 
 const metrics = [
