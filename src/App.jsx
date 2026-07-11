@@ -453,7 +453,8 @@ export default function App() {
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
         setIsHeaderCompact(window.scrollY > 48);
-        setIsPastHero(window.scrollY > window.innerHeight * 0.72);
+        const heroBottom = document.getElementById("home")?.offsetHeight || window.innerHeight;
+        setIsPastHero(window.scrollY >= heroBottom - 2);
       });
     };
 
