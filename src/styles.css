@@ -2380,3 +2380,85 @@ nav a[href="#contact"] {
     background-attachment: initial;
   }
 }
+
+/* Desktop reading scale */
+@media (min-width: 768px) {
+  .experience-title-block > span,
+  .experience-side-note strong,
+  .projects-heading-meta p,
+  .projects-edition,
+  .projects-sidebar strong,
+  .project-meta span,
+  .strength-card-content > span {
+    font-size: 15px;
+  }
+
+  .experience-title-block h2 {
+    font-size: 98px;
+  }
+
+  .experience-title-block p {
+    font-size: 20px;
+  }
+
+  .experience-side-note span {
+    font-size: 15px;
+  }
+
+  .experience-metric strong {
+    font-size: 46px;
+  }
+
+  .experience-metric span {
+    font-size: 15px;
+  }
+
+  .career-step-index,
+  .career-step-content > strong,
+  .career-step-year {
+    font-size: 15px;
+  }
+
+  .career-step-content h3 {
+    font-size: 24px;
+  }
+
+  .career-step-content p {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .projects-sidebar h2 {
+    font-size: 62px;
+  }
+
+  .project-copy h3 {
+    font-size: 46px;
+  }
+
+  .project-copy p {
+    font-size: 19px;
+  }
+
+  .strength-card h3 {
+    font-size: 34px;
+  }
+
+  .strength-card p {
+    font-size: 18px;
+  }
+
+  .contact-inner > p,
+  .contact-grid strong {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio-main::before {
+    width: 100vh;
+    height: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

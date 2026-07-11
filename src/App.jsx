@@ -224,7 +224,7 @@ function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="./assets/hero-portrait-bg.png?v=2"
           onError={(event) => event.currentTarget.classList.add("is-failed")}
           onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
