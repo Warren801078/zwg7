@@ -1903,3 +1903,136 @@ nav a[href="#contact"] {
     font-size: 10px;
   }
 }
+
+/* Mobile icon dock refresh */
+.dock-top-button {
+  display: none;
+}
+
+.hero-bg-word {
+  font-size: clamp(120px, 16vw, 300px);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 767px) {
+  .hero-bg-word {
+    font-size: clamp(78px, 22vw, 102px);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-bg-word::before {
+    content: "PERAONAL\A PROFILE";
+  }
+
+  .site-header nav a {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .site-header nav a::before,
+  .site-header nav a::after {
+    display: none;
+  }
+
+  .dock-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    background: currentColor;
+    -webkit-mask-image: var(--dock-icon);
+    mask-image: var(--dock-icon);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+  }
+
+  .site-header nav a.is-active {
+    color: var(--accent);
+    background: rgba(255, 43, 31, 0.12);
+  }
+
+  .dock-top-button {
+    position: fixed;
+    right: 14px;
+    bottom: calc(82px + env(safe-area-inset-bottom));
+    z-index: 94;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(248, 248, 244, 0.36);
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--paper);
+    font-size: 11px;
+    font-weight: 900;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+    pointer-events: auto;
+  }
+
+  .strengths-section {
+    padding-top: 82px;
+    padding-bottom: 68px;
+  }
+
+  .strengths-layout {
+    gap: 34px;
+  }
+
+  .strengths-layout .section-heading h2 {
+    margin-top: 10px;
+    font-size: 30px;
+    line-height: 1.05;
+  }
+
+  .strength-grid {
+    gap: 8px;
+  }
+
+  .strength-card-content {
+    min-height: 124px;
+    padding: 12px;
+  }
+
+  .strength-card h3 {
+    margin-top: 18px;
+    font-size: 15px;
+  }
+
+  .strength-card p {
+    margin-top: 7px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 374px) {
+  .dock-icon {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .strength-card-content {
+    min-height: 112px;
+    padding: 10px;
+  }
+
+  .strength-card h3 {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+}
+
+/* Remove the white rule under project cards */
+.projects-showcase .project-copy { border-top: 0; }
+

@@ -14,10 +14,10 @@ const profile = {
 
 const navItems = [
   { label: "顶部", href: "#home" },
-  { label: "经历", href: "#experience" },
-  { label: "作品", href: "#projects" },
-  { label: "优势", href: "#strengths" },
-  { label: "联系", href: "#contact" },
+  { label: "经历", href: "#experience", icon: "/assets/dock-experience.png" },
+  { label: "作品", href: "#projects", icon: "/assets/dock-works.png" },
+  { label: "优势", href: "#strengths", icon: "/assets/dock-strengths.png" },
+  { label: "联系", href: "#contact", icon: "/assets/dock-contact.png" },
 ];
 
 const metrics = [
@@ -182,6 +182,14 @@ function CountMetric({ metric }) {
   );
 }
 function Header({ isCompact }) {
+  const [activeHash, setActiveHash] = useState(() => window.location.hash || "#home");
+
+  useEffect(() => {
+    const updateActiveHash = () => setActiveHash(window.location.hash || "#home");
+    window.addEventListener("hashchange", updateActiveHash);
+    return () => window.removeEventListener("hashchange", updateActiveHash);
+  }, []);
+
   return (
     <header className={`site-header${isCompact ? " is-compact" : ""}`}>
       <a className="brand" href="#home" aria-label="回到顶部">
@@ -189,7 +197,8 @@ function Header({ isCompact }) {
       </a>
       <nav aria-label="主导航">
         {navItems.map((item) => (
-          <a key={item.href} href={item.href}>
+          <a key={item.href} href={item.href} className={activeHash === item.href ? "is-active" : ""} aria-current={activeHash === item.href ? "page" : undefined}>
+            {item.icon && <span className="dock-icon" style={{ "--dock-icon": `url(${item.icon})` }} aria-hidden="true" />}
             {item.label}
           </a>
         ))}
@@ -197,6 +206,7 @@ function Header({ isCompact }) {
       <a className="header-contact" href="#contact">
         联系我
       </a>
+      <a className="dock-top-button" href="#home" aria-label="回到顶部">顶部</a>
     </header>
   );
 }
@@ -220,7 +230,7 @@ function Hero() {
         <div className="scan-layer" />
       </div>
       <div className="hero-poster page-shell">
-        <div className="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
+        <div className="hero-bg-word" aria-hidden="true">PERAONAL PROFILE</div>
         <div className="hero-index-card" aria-label="核心项目数据">
           <span>///</span>
           <strong>{metrics[0].value}</strong>
