@@ -191,6 +191,7 @@ function Header({ isCompact }) {
   }, []);
 
   return (
+    <>
     <header className={`site-header${isCompact ? " is-compact" : ""}`}>
       <a className="brand" href="#home" aria-label="回到顶部">
         <img src="./assets/ZWG7_white_transparent_animated.gif?v=1" alt="ZWG7 Logo" />
@@ -206,8 +207,9 @@ function Header({ isCompact }) {
       <a className="header-contact" href="#contact">
         联系我
       </a>
-      <a className={`dock-top-button${isCompact ? " is-visible" : ""}`} href="#home" aria-label="回到顶部">顶部</a>
     </header>
+      <a className={`dock-top-button${isCompact ? " is-visible" : ""}`} href="#home" aria-label="回到顶部">顶部</a>
+    </>
   );
 }
 

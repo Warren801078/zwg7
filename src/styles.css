@@ -2287,3 +2287,48 @@ nav a[href="#contact"] {
     flex-basis: 29px;
   }
 }
+
+/* Final icon normalization and viewport-fixed top control */
+.site-header nav a[href="#experience"] .dock-icon { transform: scale(1.52); }
+.site-header nav a[href="#projects"] .dock-icon { transform: scale(1.46); }
+.site-header nav a[href="#contact"] .dock-icon { transform: scale(1.44); }
+.site-header nav a[href="#strengths"] .dock-icon { transform: scale(1); }
+
+.dock-top-button {
+  position: fixed;
+  display: none;
+  right: max(var(--pad), calc((100vw - var(--max)) / 2));
+  bottom: 28px;
+  z-index: 94;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(248, 248, 244, 0.22);
+  border-radius: 50%;
+  background: rgba(54, 20, 20, 0.84);
+  color: rgba(248, 248, 244, 0.82);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  pointer-events: none;
+}
+
+.dock-top-button.is-visible {
+  display: inline-flex;
+  pointer-events: auto;
+}
+
+@media (max-width: 767px) {
+  .dock-top-button {
+    right: 14px;
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    width: 42px;
+    height: 42px;
+    font-size: 11px;
+  }
+
+  .site-header nav a .dock-icon {
+    transform-origin: center;
+  }
+}
