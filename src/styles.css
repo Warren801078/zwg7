@@ -2236,3 +2236,54 @@ nav a[href="#contact"] {
     flex-basis: 25px;
   }
 }
+
+/* Navigation hierarchy: icon first, label secondary */
+.site-header nav a::before,
+.site-header nav a::after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-header nav a {
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .site-header nav a .dock-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .site-header .dock-top-button {
+    right: max(var(--pad), calc((100vw - var(--max)) / 2));
+  }
+}
+
+@media (max-width: 767px) {
+  .site-header nav {
+    height: 66px;
+  }
+
+  .site-header nav a {
+    height: 52px;
+    gap: 2px;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .site-header nav a .dock-icon {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+}
+
+@media (max-width: 374px) {
+  .site-header nav a .dock-icon {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+}
