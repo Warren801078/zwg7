@@ -217,6 +217,7 @@ function Hero() {
   return (
     <section className="hero section" id="home">
       <div className="hero-media" aria-hidden="true">
+        <img className="hero-video-fallback" src="./assets/hero-portrait-bg.png?v=2" alt="" />
         <video
           className="hero-video-bg"
           autoPlay
@@ -224,7 +225,9 @@ function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="./assets/hero-portrait-bg.png?v=1"
+          poster="./assets/hero-portrait-bg.png?v=2"
+          onError={(event) => event.currentTarget.classList.add("is-failed")}
+          onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
         >
           <source src="./assets/hero-background.mp4?v=1" type="video/mp4" />
         </video>
