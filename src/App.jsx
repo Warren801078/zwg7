@@ -9,7 +9,7 @@ const profile = {
   role: "AI设计师 / 数字平面设计师 / 运营设计师",
   email: "zwg801078@gmail.com",
   wechat: "Zzzwg7",
-  location: "义乌",
+  location: "+86 0579-13173801078",
 };
 
 const navItems = [
@@ -426,15 +426,15 @@ function Contact() {
         </h2>
         <div className="contact-grid">
           <a href={`mailto:${profile.email}`} aria-label={`发送邮件给${profile.cnName}`}>
-            <span>Email</span>
+            <span>EMAIL/邮箱</span>
             <strong>{profile.email}</strong>
           </a>
           <a href="#home" aria-label={`微信 ${profile.wechat}`}>
-            <span>Wechat</span>
+            <span>WECHAT/微信</span>
             <strong>{profile.wechat}</strong>
           </a>
           <a href="#home">
-            <span>Location</span>
+            <span>CELL/手机号</span>
             <strong>{profile.location}</strong>
           </a>
         </div>
