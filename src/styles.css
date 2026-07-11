@@ -2569,3 +2569,17 @@ nav a[href="#contact"] {
     transform: none;
   }
 }
+
+
+/* Keep the mobile hero above the fixed continuation background */
+@media (max-width: 767px) {
+  .hero {
+    position: relative;
+    z-index: 3;
+  }
+
+  .portfolio-main {
+    position: relative;
+    z-index: 1;
+  }
+}
