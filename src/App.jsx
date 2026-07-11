@@ -14,10 +14,10 @@ const profile = {
 
 const navItems = [
   { label: "顶部", href: "#home" },
-  { label: "经历", href: "#experience", icon: "/assets/dock-experience.png" },
-  { label: "作品", href: "#projects", icon: "/assets/dock-works.png" },
-  { label: "优势", href: "#strengths", icon: "/assets/dock-strengths.png" },
-  { label: "联系", href: "#contact", icon: "/assets/dock-contact.png" },
+  { label: "经历", href: "#experience", icon: "./assets/dock-experience.png" },
+  { label: "作品", href: "#projects", icon: "./assets/dock-works.png" },
+  { label: "优势", href: "#strengths", icon: "./assets/dock-strengths.png" },
+  { label: "联系", href: "#contact", icon: "./assets/dock-contact.png" },
 ];
 
 const metrics = [
