@@ -2769,3 +2769,12 @@ nav a[href="#contact"] {
     right: 10px;
   }
 }
+
+
+/* Hide global controls while the project preview is open */
+body.is-project-modal-open .site-header,
+body.is-project-modal-open .dock-top-button {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
