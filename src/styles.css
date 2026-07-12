@@ -2836,3 +2836,12 @@ nav a[href="#contact"] {
     right: 12px;
   }
 }
+
+
+/* Keep the project preview as the only visible layer */
+body.is-project-modal-open .site-header,
+body.is-project-modal-open .dock-top-button {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

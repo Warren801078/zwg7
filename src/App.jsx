@@ -358,9 +358,11 @@ function Projects() {
     };
     document.addEventListener("keydown", closeOnEscape);
     document.body.style.overflow = "hidden";
+    document.body.classList.add("is-project-modal-open");
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
       document.body.style.overflow = "";
+      document.body.classList.remove("is-project-modal-open");
     };
   }, [activeProject]);
 
