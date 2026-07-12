@@ -214,23 +214,39 @@ function Header({ isCompact }) {
 }
 
 function Hero() {
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const isSlowNetwork = Boolean(connection?.saveData || /(^|-)2g$|slow-2g/.test(connection?.effectiveType || ""));
+    if (isSlowNetwork) return undefined;
+    const start = () => setShouldLoadVideo(true);
+    const idle = window.requestIdleCallback ? window.requestIdleCallback(start, { timeout: 1200 }) : window.setTimeout(start, 700);
+    return () => {
+      if (window.cancelIdleCallback && typeof idle === "number") window.cancelIdleCallback(idle);
+      else window.clearTimeout(idle);
+    };
+  }, []);
+
   return (
     <section className="hero section" id="home">
       <div className="hero-media" aria-hidden="true">
         <img className="hero-video-fallback" src="./assets/hero-portrait-bg.png?v=2" alt="" />
-        <video
-          className="hero-video-bg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="./assets/hero-portrait-bg.png?v=2"
-          onError={(event) => event.currentTarget.classList.add("is-failed")}
-          onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
-        >
-          <source src="./assets/hero-background.mp4?v=1" type="video/mp4" />
-        </video>
+        {shouldLoadVideo && (
+          <video
+            className="hero-video-bg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster="./assets/hero-portrait-bg.png?v=2"
+            onError={(event) => event.currentTarget.classList.add("is-failed")}
+            onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
+          >
+            <source src="./assets/hero-background.mp4?v=1" type="video/mp4" />
+          </video>
+        )}
         <div className="motion-field" />
         <div className="scan-layer" />
       </div>
@@ -413,7 +429,7 @@ function Projects() {
                     event.preventDefault();
                     setActiveProject(project);
                   }}>
-                    <img src={project.image} alt={`${project.title} 项目视觉`} />
+                    <img src={project.image} alt={`${project.title} 项目视觉`} loading="lazy" decoding="async" />
                   </a>
                   <div className="project-copy">
                     <div className="project-meta">
