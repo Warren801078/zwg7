@@ -325,35 +325,31 @@ function Projects() {
   useEffect(() => {
     const track = projectTrackRef.current;
     if (!track) return undefined;
-    let frame = 0;
     let paused = false;
-    let direction = 1;
-    const tick = () => {
-      if (!paused && track.scrollWidth > track.clientWidth + 2) {
-        track.scrollLeft += 0.35 * direction;
-        if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) direction = -1;
-        if (track.scrollLeft <= 0) direction = 1;
-      }
-      frame = window.requestAnimationFrame(tick);
-    };
     let resumeTimer = 0;
+    const step = () => {
+      if (paused || track.scrollWidth <= track.clientWidth + 2) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      track.scrollLeft += 0.8;
+      if (track.scrollLeft >= maxScroll - 1) track.scrollLeft = 0;
+    };
     const pause = () => {
       paused = true;
       window.clearTimeout(resumeTimer);
     };
     const resume = () => {
       window.clearTimeout(resumeTimer);
-      resumeTimer = window.setTimeout(() => { paused = false; }, 1200);
+      resumeTimer = window.setTimeout(() => { paused = false; }, 900);
     };
+    const timer = window.setInterval(step, 30);
     track.addEventListener("pointerdown", pause);
     track.addEventListener("pointerup", resume);
     track.addEventListener("pointercancel", resume);
     track.addEventListener("wheel", pause, { passive: true });
     track.addEventListener("touchstart", pause, { passive: true });
     track.addEventListener("touchend", resume, { passive: true });
-    frame = window.requestAnimationFrame(tick);
     return () => {
-      window.cancelAnimationFrame(frame);
+      window.clearInterval(timer);
       window.clearTimeout(resumeTimer);
       track.removeEventListener("pointerdown", pause);
       track.removeEventListener("pointerup", resume);
@@ -370,13 +366,24 @@ function Projects() {
     const closeOnEscape = (event) => {
       if (event.key === "Escape") setActiveProject(null);
     };
+    const scrollY = window.scrollY;
     document.addEventListener("keydown", closeOnEscape);
+    document.body.dataset.projectModalScrollY = String(scrollY);
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
     document.body.style.overflow = "hidden";
     document.body.classList.add("is-project-modal-open");
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
+      const savedScrollY = Number(document.body.dataset.projectModalScrollY || scrollY);
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
       document.body.style.overflow = "";
+      delete document.body.dataset.projectModalScrollY;
       document.body.classList.remove("is-project-modal-open");
+      window.scrollTo(0, savedScrollY);
     };
   }, [activeProject]);
 
@@ -407,7 +414,6 @@ function Projects() {
                     setActiveProject(project);
                   }}>
                     <img src={project.image} alt={`${project.title} 项目视觉`} />
-                    <span>VIEW PROJECT</span>
                   </a>
                   <div className="project-copy">
                     <div className="project-meta">

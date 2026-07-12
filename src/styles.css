@@ -2859,3 +2859,48 @@ body.is-project-modal-open .dock-top-button {
     bottom: 18px;
   }
 }
+
+/* Final project carousel and modal interaction fixes */
+.project-modal {
+  z-index: 9999;
+  overscroll-behavior: contain;
+  touch-action: none;
+}
+
+.project-modal-content,
+.project-modal-close,
+.project-modal-zoom-controls {
+  touch-action: auto;
+}
+
+.projects-showcase .project-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-snap-type: none;
+  scrollbar-width: none;
+}
+
+.projects-showcase .project-list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.projects-showcase .project-card {
+  flex: 0 0 clamp(300px, 25vw, 390px) !important;
+  width: clamp(300px, 25vw, 390px) !important;
+  height: 500px !important;
+  min-height: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .projects-showcase .project-card {
+    flex: 0 0 min(82vw, 360px) !important;
+    width: min(82vw, 360px) !important;
+    height: 430px !important;
+  }
+}
