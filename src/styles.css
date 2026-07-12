@@ -2618,8 +2618,12 @@ nav a[href="#contact"] {
 }
 
 .contact-icon {
-  width: 28px;
-  height: 28px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  max-width: none;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 32px;
   object-fit: contain;
   object-position: center;
 }
