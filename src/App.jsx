@@ -396,46 +396,60 @@ function Strengths() {
   );
 }
 
+function ContactIcon({ type }) {
+  const paths = {
+    email: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>,
+    wechat: <><path d="M8.5 18.5c-3.6 0-6.5-2.2-6.5-5s2.9-5 6.5-5c.7 0 1.4.1 2 .3C10.1 5.9 13.3 3 17.5 3 21.1 3 24 5.2 24 8s-2.9 5-6.5 5c-.7 0-1.4-.1-2-.3-1.2 3.3-3.8 5.8-7 5.8Z" /><path d="M7 12h.01M11 12h.01M16 7h.01M20 7h.01" /></>,
+    phone: <><path d="M6.6 3.5 9 3l2 5-2.1 1.7a15.4 15.4 0 0 0 5.4 5.4L16 13l5 2 .5 2.4a2 2 0 0 1-2 2.4C10.8 19.2 4.8 13.2 4.2 4.5a2 2 0 0 1 2.4-1Z" /></>,
+  };
+  return <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">{paths[type]}</svg>;
+}
+
+function CopyButton({ value }) {
+  const [copied, setCopied] = useState(false);
+  const copyValue = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      const input = document.createElement("textarea");
+      input.value = value;
+      input.style.position = "fixed";
+      input.style.opacity = "0";
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      input.remove();
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1400);
+  };
+  return <button className={`copy-button${copied ? " is-copied" : ""}`} type="button" onClick={copyValue} aria-label={copied ? "已复制" : "复制联系方式"} title={copied ? "已复制" : "复制"}>
+    {copied ? <span className="copy-check">✓</span> : <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></svg>}
+  </button>;
+}
+
 function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="page-shell contact-inner">
-        <h2 className="contact-title" aria-label={"\u8ba9\u8bbe\u8ba1\u6210\u4e3a\u8fd0\u8425\u7684\u8868\u8fbe\u7a97\u53e3\uff0c\u8ba9AI\u6210\u4e3a\u6548\u7387\u7684\u653e\u5927\u5668\u3002"}>
-          <SplitText
-            text={"\u8ba9\u8bbe\u8ba1\u6210\u4e3a\u8fd0\u8425\u7684\u8868\u8fbe\u7a97\u53e3\uff0c"}
-            className="contact-title-line"
-            delay={42}
-            duration={1.1}
-            ease="power3.out"
-            splitType="chars"
-            threshold={0.2}
-            rootMargin="-90px"
-            tag="span"
-          />
-          <SplitText
-            text={"\u8ba9AI\u6210\u4e3a\u6548\u7387\u7684\u653e\u5927\u5668\u3002"}
-            className="contact-title-line"
-            delay={42}
-            duration={1.1}
-            ease="power3.out"
-            splitType="chars"
-            threshold={0.2}
-            rootMargin="-90px"
-            tag="span"
-          />
+        <h2 className="contact-title" aria-label={"让设计成为运营的表达窗口，让AI成为效率的放大器。"}>
+          <SplitText text={"让设计成为运营的表达窗口，"} className="contact-title-line" delay={42} duration={1.1} ease="power3.out" splitType="chars" threshold={0.2} rootMargin="-90px" tag="span" />
+          <SplitText text={"让AI成为效率的放大器。"} className="contact-title-line" delay={42} duration={1.1} ease="power3.out" splitType="chars" threshold={0.2} rootMargin="-90px" tag="span" />
         </h2>
         <div className="contact-grid">
           <a href={`mailto:${profile.email}`} aria-label={`发送邮件给${profile.cnName}`}>
-            <span>EMAIL/邮箱</span>
-            <strong>{profile.email}</strong>
+            <ContactIcon type="email" />
+            <div className="contact-value-row"><strong>{profile.email}</strong><CopyButton value={profile.email} /></div>
           </a>
           <a href="#home" aria-label={`微信 ${profile.wechat}`}>
-            <span>WECHAT/微信</span>
-            <strong>{profile.wechat}</strong>
+            <ContactIcon type="wechat" />
+            <div className="contact-value-row"><strong>{profile.wechat}</strong><CopyButton value={profile.wechat} /></div>
           </a>
-          <a href="#home">
-            <span>CELL/手机号</span>
-            <strong>{profile.location}</strong>
+          <a href={`tel:${profile.location.replace(/[^+\d]/g, "")}`} aria-label={profile.location}>
+            <ContactIcon type="phone" />
+            <div className="contact-value-row"><strong>{profile.location}</strong><CopyButton value={profile.location} /></div>
           </a>
         </div>
       </div>

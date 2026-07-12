@@ -2607,3 +2607,77 @@ nav a[href="#contact"] {
     overflow: visible;
   }
 }
+
+
+/* Contact cards: icon, value, and copy action */
+.contact-grid a {
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 15px;
+  row-gap: 0;
+}
+
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-value-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-value-row strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.copy-button {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(248, 248, 244, 0.22);
+  border-radius: 50%;
+  color: var(--paper);
+  background: rgba(248, 248, 244, 0.08);
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.copy-button svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.copy-button:hover,
+.copy-button:focus-visible,
+.copy-button.is-copied {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(255, 43, 31, 0.12);
+}
+
+.copy-button:active {
+  transform: scale(0.92);
+}
+
+.copy-check {
+  font-size: 17px;
+  line-height: 1;
+}
