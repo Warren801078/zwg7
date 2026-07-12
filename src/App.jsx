@@ -319,6 +319,37 @@ function Experience() {
 }
 function Projects() {
   const [activeProject, setActiveProject] = useState(null);
+  const projectTrackRef = React.useRef(null);
+
+  useEffect(() => {
+    const track = projectTrackRef.current;
+    if (!track) return undefined;
+    let frame = 0;
+    let paused = false;
+    let direction = 1;
+    const tick = () => {
+      if (!paused && track.scrollWidth > track.clientWidth + 2) {
+        track.scrollLeft += 0.22 * direction;
+        if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) direction = -1;
+        if (track.scrollLeft <= 0) direction = 1;
+      }
+      frame = window.requestAnimationFrame(tick);
+    };
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    track.addEventListener("pointerenter", pause);
+    track.addEventListener("pointerleave", resume);
+    track.addEventListener("touchstart", pause, { passive: true });
+    track.addEventListener("touchend", resume, { passive: true });
+    frame = window.requestAnimationFrame(tick);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      track.removeEventListener("pointerenter", pause);
+      track.removeEventListener("pointerleave", resume);
+      track.removeEventListener("touchstart", pause);
+      track.removeEventListener("touchend", resume);
+    };
+  }, []);
 
   useEffect(() => {
     if (!activeProject) return undefined;
@@ -352,18 +383,13 @@ function Projects() {
               </div>
             </aside>
 
-            <div className="project-list">
-              {projects.slice(0, 3).map((project) => (
+            <div className="project-list" ref={projectTrackRef}>
+              {projects.map((project) => (
                 <article className="project-card" key={project.title}>
-                  <a
-                    className="project-image"
-                    href="#projects"
-                    aria-label={`查看${project.title}`}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setActiveProject(project);
-                    }}
-                  >
+                  <a className="project-image" href="#projects" aria-label={`查看${project.title}`} onClick={(event) => {
+                    event.preventDefault();
+                    setActiveProject(project);
+                  }}>
                     <img src={project.image} alt={`${project.title} 项目视觉`} />
                     <span>VIEW PROJECT</span>
                   </a>
@@ -375,6 +401,7 @@ function Projects() {
                 </article>
               ))}
             </div>
+            <div className="projects-track-cue" aria-hidden="true"><span>←</span><i></i><span>→</span></div>
           </div>
         </div>
       </section>
