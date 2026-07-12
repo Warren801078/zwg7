@@ -319,6 +319,7 @@ function Experience() {
 }
 function Projects() {
   const [activeProject, setActiveProject] = useState(null);
+  const [zoom, setZoom] = useState(1);
   const projectTrackRef = React.useRef(null);
 
   useEffect(() => {
@@ -365,6 +366,7 @@ function Projects() {
 
   useEffect(() => {
     if (!activeProject) return undefined;
+    setZoom(1);
     const closeOnEscape = (event) => {
       if (event.key === "Escape") setActiveProject(null);
     };
@@ -425,8 +427,16 @@ function Projects() {
           <button className="project-modal-close" type="button" onClick={() => setActiveProject(null)} aria-label="关闭作品预览">
             <span aria-hidden="true">×</span>
           </button>
-          <div className="project-modal-content" onClick={(event) => event.stopPropagation()}>
-            <img src={activeProject.image} alt={`${activeProject.title} 项目视觉大图`} />
+          <div className="project-modal-content" onClick={(event) => event.stopPropagation()} onWheel={(event) => {
+            event.preventDefault();
+            setZoom((value) => Math.min(3, Math.max(1, value + (event.deltaY < 0 ? 0.1 : -0.1))));
+          }}>
+            <img src={activeProject.image} alt={`${activeProject.title} 项目视觉大图`} style={{ transform: `scale(${zoom})` }} />
+          </div>
+          <div className="project-modal-zoom-controls" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => setZoom((value) => Math.max(1, value - 0.2))} aria-label="缩小">−</button>
+            <button type="button" onClick={() => setZoom(1)} aria-label="重置缩放">{Math.round(zoom * 100)}%</button>
+            <button type="button" onClick={() => setZoom((value) => Math.min(3, value + 0.2))} aria-label="放大">+</button>
           </div>
         </div>
       )}
