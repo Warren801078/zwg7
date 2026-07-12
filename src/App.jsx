@@ -395,13 +395,17 @@ function Projects() {
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
       const savedScrollY = Number(document.body.dataset.projectModalScrollY || scrollY);
+      const html = document.documentElement;
+      const previousScrollBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflow = "";
       delete document.body.dataset.projectModalScrollY;
       document.body.classList.remove("is-project-modal-open");
-      window.scrollTo(0, savedScrollY);
+      window.scrollTo({ top: savedScrollY, left: 0, behavior: "auto" });
+      html.style.scrollBehavior = previousScrollBehavior;
     };
   }, [activeProject]);
 
