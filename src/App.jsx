@@ -90,6 +90,13 @@ const projects = [
     summary:
       "使用AI辅助视觉推演、文案整理、代码原型和运营分析，让设计从单点交付走向系统协作。",
   },
+  {
+    title: "家居电商详情页",
+    category: "家居电商详情页",
+    image: "./assets/case-home-ecommerce.png?v=1",
+    summary:
+      "围绕清洁产品卖点、使用场景与转化信息，建立完整的家居电商详情页表达。",
+  },
 ];
 
 const strengths = [
@@ -329,23 +336,35 @@ function Projects() {
     let direction = 1;
     const tick = () => {
       if (!paused && track.scrollWidth > track.clientWidth + 2) {
-        track.scrollLeft += 0.22 * direction;
+        track.scrollLeft += 0.35 * direction;
         if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) direction = -1;
         if (track.scrollLeft <= 0) direction = 1;
       }
       frame = window.requestAnimationFrame(tick);
     };
-    const pause = () => { paused = true; };
-    const resume = () => { paused = false; };
-    track.addEventListener("pointerenter", pause);
-    track.addEventListener("pointerleave", resume);
+    let resumeTimer = 0;
+    const pause = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+    };
+    const resume = () => {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => { paused = false; }, 1200);
+    };
+    track.addEventListener("pointerdown", pause);
+    track.addEventListener("pointerup", resume);
+    track.addEventListener("pointercancel", resume);
+    track.addEventListener("wheel", pause, { passive: true });
     track.addEventListener("touchstart", pause, { passive: true });
     track.addEventListener("touchend", resume, { passive: true });
     frame = window.requestAnimationFrame(tick);
     return () => {
       window.cancelAnimationFrame(frame);
-      track.removeEventListener("pointerenter", pause);
-      track.removeEventListener("pointerleave", resume);
+      window.clearTimeout(resumeTimer);
+      track.removeEventListener("pointerdown", pause);
+      track.removeEventListener("pointerup", resume);
+      track.removeEventListener("pointercancel", resume);
+      track.removeEventListener("wheel", pause);
       track.removeEventListener("touchstart", pause);
       track.removeEventListener("touchend", resume);
     };
@@ -403,7 +422,7 @@ function Projects() {
                 </article>
               ))}
             </div>
-            <div className="projects-track-cue" aria-hidden="true"><span>←</span><i></i><span>→</span></div>
+
           </div>
         </div>
       </section>
