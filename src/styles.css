@@ -2904,3 +2904,11 @@ body.is-project-modal-open .dock-top-button {
     height: 430px !important;
   }
 }
+.project-modal-content {
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.project-modal-content:active {
+  cursor: grabbing;
+}

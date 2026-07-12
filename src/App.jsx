@@ -339,6 +339,14 @@ function Projects() {
   const [activeProject, setActiveProject] = useState(null);
   const [zoom, setZoom] = useState(1);
   const projectTrackRef = React.useRef(null);
+  const modalSwipeRef = React.useRef({ x: 0, y: 0 });
+
+  const switchProject = (direction) => {
+    const currentIndex = projects.findIndex((project) => project.title === activeProject?.title);
+    if (currentIndex < 0) return;
+    const nextIndex = (currentIndex + direction + projects.length) % projects.length;
+    setActiveProject(projects[nextIndex]);
+  };
 
   useEffect(() => {
     const track = projectTrackRef.current;
@@ -407,6 +415,10 @@ function Projects() {
       window.scrollTo({ top: savedScrollY, left: 0, behavior: "auto" });
       html.style.scrollBehavior = previousScrollBehavior;
     };
+  }, [Boolean(activeProject)]);
+
+  useEffect(() => {
+    if (activeProject) setZoom(1);
   }, [activeProject]);
 
   return (
@@ -455,10 +467,29 @@ function Projects() {
           <button className="project-modal-close" type="button" onClick={() => setActiveProject(null)} aria-label="关闭作品预览">
             <span aria-hidden="true">×</span>
           </button>
-          <div className="project-modal-content" onClick={(event) => event.stopPropagation()} onWheel={(event) => {
-            event.preventDefault();
-            setZoom((value) => Math.min(3, Math.max(1, value + (event.deltaY < 0 ? 0.1 : -0.1))));
-          }}>
+          <div
+            className="project-modal-content"
+            onClick={(event) => event.stopPropagation()}
+            onWheel={(event) => {
+              event.preventDefault();
+              setZoom((value) => Math.min(3, Math.max(1, value + (event.deltaY < 0 ? 0.1 : -0.1))));
+            }}
+            onPointerDown={(event) => {
+              event.currentTarget.setPointerCapture?.(event.pointerId);
+              modalSwipeRef.current = { x: event.clientX, y: event.clientY };
+            }}
+            onPointerUp={(event) => {
+              const deltaX = event.clientX - modalSwipeRef.current.x;
+              const deltaY = event.clientY - modalSwipeRef.current.y;
+              if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                switchProject(deltaX < 0 ? 1 : -1);
+              }
+              modalSwipeRef.current = { x: 0, y: 0 };
+            }}
+            onPointerCancel={() => {
+              modalSwipeRef.current = { x: 0, y: 0 };
+            }}
+          >
             <img src={activeProject.image} alt={`${activeProject.title} 项目视觉大图`} style={{ transform: `scale(${zoom})` }} />
           </div>
           <div className="project-modal-zoom-controls" onClick={(event) => event.stopPropagation()}>
