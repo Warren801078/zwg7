@@ -318,44 +318,78 @@ function Experience() {
   );
 }
 function Projects() {
+  const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    if (!activeProject) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setActiveProject(null);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.body.style.overflow = "";
+    };
+  }, [activeProject]);
+
   return (
-    <section className="section projects-section" id="projects">
-      <div className="page-shell projects-showcase">
-        <div className="projects-heading">
-          <div className="projects-heading-meta">
-            <p>把品牌视觉、数字平面与运营设计放进同一套增长逻辑中。</p>
-            <span className="projects-edition">PORTFOLIO / 2026</span>
-          </div>
-        </div>
-
-        <div className="projects-gallery">
-          <aside className="projects-sidebar">
-            <h2>作品展示</h2>
-            <div>
-              <strong>SELECTED<br />WORKS</strong>
+    <>
+      <section className="section projects-section" id="projects">
+        <div className="page-shell projects-showcase">
+          <div className="projects-heading">
+            <div className="projects-heading-meta">
+              <p>把品牌视觉、数字平面与运营设计放进同一套增长逻辑中。</p>
+              <span className="projects-edition">PORTFOLIO / 2026</span>
             </div>
-          </aside>
+          </div>
 
-          <div className="project-list">
-            {projects.slice(0, 3).map((project) => (
-              <article className="project-card" key={project.title}>
-                <a className="project-image" href="#contact" aria-label={`了解${project.title}`}>
-                  <img src={project.image} alt={`${project.title} 项目视觉`} />
-                  <span>VIEW PROJECT</span>
-                </a>
-                <div className="project-copy">
-                  <div className="project-meta">
-                    <span>{project.category}</span>
+          <div className="projects-gallery">
+            <aside className="projects-sidebar">
+              <h2>作品展示</h2>
+              <div>
+                <strong>SELECTED<br />WORKS</strong>
+              </div>
+            </aside>
+
+            <div className="project-list">
+              {projects.slice(0, 3).map((project) => (
+                <article className="project-card" key={project.title}>
+                  <a
+                    className="project-image"
+                    href="#projects"
+                    aria-label={`查看${project.title}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setActiveProject(project);
+                    }}
+                  >
+                    <img src={project.image} alt={`${project.title} 项目视觉`} />
+                    <span>VIEW PROJECT</span>
+                  </a>
+                  <div className="project-copy">
+                    <div className="project-meta">
+                      <span>{project.category}</span>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-
-      </div>
-    </section>
+      {activeProject && (
+        <div className="project-modal" role="dialog" aria-modal="true" aria-label={activeProject.title} onClick={() => setActiveProject(null)}>
+          <button className="project-modal-close" type="button" onClick={() => setActiveProject(null)} aria-label="关闭作品预览">
+            <span aria-hidden="true">×</span>
+          </button>
+          <div className="project-modal-content" onClick={(event) => event.stopPropagation()}>
+            <img src={activeProject.image} alt={`${activeProject.title} 项目视觉大图`} />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
