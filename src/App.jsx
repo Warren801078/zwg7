@@ -397,12 +397,12 @@ function Strengths() {
 }
 
 function ContactIcon({ type }) {
-  const paths = {
-    email: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>,
-    wechat: <><path d="M8.5 18.5c-3.6 0-6.5-2.2-6.5-5s2.9-5 6.5-5c.7 0 1.4.1 2 .3C10.1 5.9 13.3 3 17.5 3 21.1 3 24 5.2 24 8s-2.9 5-6.5 5c-.7 0-1.4-.1-2-.3-1.2 3.3-3.8 5.8-7 5.8Z" /><path d="M7 12h.01M11 12h.01M16 7h.01M20 7h.01" /></>,
-    phone: <><path d="M6.6 3.5 9 3l2 5-2.1 1.7a15.4 15.4 0 0 0 5.4 5.4L16 13l5 2 .5 2.4a2 2 0 0 1-2 2.4C10.8 19.2 4.8 13.2 4.2 4.5a2 2 0 0 1 2.4-1Z" /></>,
+  const icons = {
+    email: "./assets/contact-email-solid.png",
+    wechat: "./assets/contact-wechat-solid.png",
+    phone: "./assets/contact-phone-solid.png",
   };
-  return <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">{paths[type]}</svg>;
+  return <img className="contact-icon" src={icons[type]} alt="" aria-hidden="true" />;
 }
 
 function CopyButton({ value }) {

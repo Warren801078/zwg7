@@ -2620,11 +2620,8 @@ nav a[href="#contact"] {
 .contact-icon {
   width: 28px;
   height: 28px;
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  object-fit: contain;
+  object-position: center;
 }
 
 .contact-value-row {
