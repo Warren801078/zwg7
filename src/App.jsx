@@ -84,13 +84,6 @@ const projects = [
       "将产品定位、人群痛点、主图表达和详情页说服逻辑整合成可测试的电商视觉资产。",
   },
   {
-    title: "AI辅助设计工作流探索",
-    category: "AI Design / Prototype",
-    image: "./assets/project-ai.png?v=2",
-    summary:
-      "使用AI辅助视觉推演、文案整理、代码原型和运营分析，让设计从单点交付走向系统协作。",
-  },
-  {
     title: "家居电商详情页",
     category: "家居电商详情页",
     image: "./assets/case-home-ecommerce.png?v=1",
