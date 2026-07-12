@@ -16,10 +16,10 @@ const profile = {
 
 const navItems = [
   { label: "顶部", href: "#home" },
-  { label: "经历", href: "#experience", icon: "./assets/dock-experience-alpha.png" },
-  { label: "作品", href: "#projects", icon: "./assets/dock-works-alpha.png" },
-  { label: "优势", href: "#strengths", icon: "./assets/dock-strengths-alpha.png" },
-  { label: "联系", href: "#contact", icon: "./assets/dock-contact-alpha.png" },
+  { label: "经历", href: "#experience", icon: `${COS_ASSET_BASE}/dock-experience-alpha.png` },
+  { label: "作品", href: "#projects", icon: `${COS_ASSET_BASE}/dock-works-alpha.png` },
+  { label: "优势", href: "#strengths", icon: `${COS_ASSET_BASE}/dock-strengths-alpha.png` },
+  { label: "联系", href: "#contact", icon: `${COS_ASSET_BASE}/dock-contact-alpha.png` },
 ];
 
 const metrics = [
@@ -196,7 +196,7 @@ function Header({ isCompact }) {
     <>
     <header className={`site-header${isCompact ? " is-compact" : ""}`}>
       <a className="brand" href="#home" aria-label="回到顶部">
-        <img src="./assets/ZWG7_white_transparent_animated.gif?v=1" alt="ZWG7 Logo" />
+        <img src={`${COS_ASSET_BASE}/ZWG7_white_transparent_animated.gif`} alt="ZWG7 Logo" />
       </a>
       <nav aria-label="主导航">
         {navItems.map((item) => (
@@ -233,7 +233,7 @@ function Hero() {
   return (
     <section className="hero section" id="home">
       <div className="hero-media" aria-hidden="true">
-        <img className="hero-video-fallback" src="./assets/hero-portrait-bg.png?v=2" alt="" />
+        <img className="hero-video-fallback" src={`${COS_ASSET_BASE}/hero-portrait-bg.png`} alt="" />
         {shouldLoadVideo && (
           <video
             className="hero-video-bg"
@@ -242,7 +242,7 @@ function Hero() {
             loop
             playsInline
             preload="none"
-            poster="./assets/hero-portrait-bg.png?v=2"
+            poster={`${COS_ASSET_BASE}/hero-portrait-bg.png`}
             onError={(event) => event.currentTarget.classList.add("is-failed")}
             onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
           >
@@ -542,9 +542,9 @@ function Strengths() {
 
 function ContactIcon({ type }) {
   const icons = {
-    email: "./assets/contact-email-solid.png",
-    wechat: "./assets/contact-wechat-solid.png",
-    phone: "./assets/contact-phone-solid.png",
+    email: `${COS_ASSET_BASE}/contact-email-solid.png`,
+    wechat: `${COS_ASSET_BASE}/contact-wechat-solid.png`,
+    phone: `${COS_ASSET_BASE}/contact-phone-solid.png`,
   };
   return <img className="contact-icon" src={icons[type]} alt="" aria-hidden="true" />;
 }
