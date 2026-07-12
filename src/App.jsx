@@ -3,6 +3,8 @@ import Grainient from "./Grainient";
 import BorderGlow from "./BorderGlow";
 import SplitText from "./SplitText";
 
+const COS_ASSET_BASE = "https://zwg7-1311977854.cos.ap-guangzhou.myqcloud.com";
+
 const profile = {
   name: "Zzz",
   cnName: "张先生",
@@ -65,28 +67,28 @@ const projects = [
   {
     title: "普拉提品牌视觉系统",
     category: "普拉提品牌视觉系统",
-    image: "./assets/case-pilates.png?v=1",
+    image: `${COS_ASSET_BASE}/case-pilates.png`,
     summary:
       "围绕品牌调性统一电商视觉，并连接达人种草、站内承接、客服与仓储协作。",
   },
   {
     title: "护肤产品海报设计",
     category: "护肤产品海报设计",
-    image: "./assets/case-skincare.png?v=1",
+    image: `${COS_ASSET_BASE}/case-skincare.png`,
     summary:
       "从平台货品、视觉表达、客户理解到投放测图，建立面向零售与批发客户的增长闭环。",
   },
   {
     title: "充电桩产品出口海报设计",
     category: "充电桩产品出口海报设计",
-    image: "./assets/case-charger.png?v=1",
+    image: `${COS_ASSET_BASE}/case-charger.png`,
     summary:
       "将产品定位、人群痛点、主图表达和详情页说服逻辑整合成可测试的电商视觉资产。",
   },
   {
     title: "家居电商详情页",
     category: "家居电商详情页",
-    image: "./assets/case-home-ecommerce.png?v=1",
+    image: `${COS_ASSET_BASE}/case-home-ecommerce.png`,
     summary:
       "围绕清洁产品卖点、使用场景与转化信息，建立完整的家居电商详情页表达。",
   },
@@ -244,7 +246,7 @@ function Hero() {
             onError={(event) => event.currentTarget.classList.add("is-failed")}
             onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
           >
-            <source src="./assets/hero-background.mp4?v=1" type="video/mp4" />
+            <source src={`${COS_ASSET_BASE}/hero-background.mp4`} type="video/mp4" />
           </video>
         )}
         <div className="motion-field" />
