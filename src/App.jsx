@@ -17,10 +17,10 @@ const profile = {
 
 const navItems = [
   { label: "顶部", href: "#home" },
-  { label: "经历", href: "#experience", icon: `${COS_ASSET_BASE}/dock-experience-alpha.png` },
-  { label: "作品", href: "#projects", icon: `${COS_ASSET_BASE}/dock-works-alpha.png` },
-  { label: "优势", href: "#strengths", icon: `${COS_ASSET_BASE}/dock-strengths-alpha.png` },
-  { label: "联系", href: "#contact", icon: `${COS_ASSET_BASE}/dock-contact-alpha.png` },
+  { label: "经历", href: "#experience", icon: `${COS_ASSET_BASE}/dock-experience-alpha.webp` },
+  { label: "作品", href: "#projects", icon: `${COS_ASSET_BASE}/dock-works-alpha.webp` },
+  { label: "优势", href: "#strengths", icon: `${COS_ASSET_BASE}/dock-strengths-alpha.webp` },
+  { label: "联系", href: "#contact", icon: `${COS_ASSET_BASE}/dock-contact-alpha.webp` },
 ];
 
 const metrics = [
@@ -68,28 +68,28 @@ const projects = [
   {
     title: "普拉提品牌视觉系统",
     category: "普拉提品牌视觉系统",
-    image: `${COS_ASSET_BASE}/case-pilates.png`,
+    image: `${COS_ASSET_BASE}/case-pilates.webp`,
     summary:
       "围绕品牌调性统一电商视觉，并连接达人种草、站内承接、客服与仓储协作。",
   },
   {
     title: "护肤产品海报设计",
     category: "护肤产品海报设计",
-    image: `${COS_ASSET_BASE}/case-skincare.png`,
+    image: `${COS_ASSET_BASE}/case-skincare.webp`,
     summary:
       "从平台货品、视觉表达、客户理解到投放测图，建立面向零售与批发客户的增长闭环。",
   },
   {
     title: "充电桩产品出口海报设计",
     category: "充电桩产品出口海报设计",
-    image: `${COS_ASSET_BASE}/case-charger.png`,
+    image: `${COS_ASSET_BASE}/case-charger.webp`,
     summary:
       "将产品定位、人群痛点、主图表达和详情页说服逻辑整合成可测试的电商视觉资产。",
   },
   {
     title: "家居电商详情页",
     category: "家居电商详情页",
-    image: `${COS_ASSET_BASE}/case-home-ecommerce.png`,
+    image: `${COS_ASSET_BASE}/case-home-ecommerce.webp`,
     summary:
       "围绕清洁产品卖点、使用场景与转化信息，建立完整的家居电商详情页表达。",
   },
@@ -234,7 +234,7 @@ function Hero() {
   return (
     <section className="hero section" id="home">
       <div className="hero-media" aria-hidden="true">
-        <img className="hero-video-fallback" src={`${COS_ASSET_BASE}/hero-portrait-bg.png`} alt="" />
+        <img className="hero-video-fallback" src={`${COS_ASSET_BASE}/hero-portrait-bg.webp`} alt="" />
         {shouldLoadVideo && (
           <video
             className="hero-video-bg"
@@ -243,7 +243,7 @@ function Hero() {
             loop
             playsInline
             preload="none"
-            poster={`${COS_ASSET_BASE}/hero-portrait-bg.png`}
+            poster={`${COS_ASSET_BASE}/hero-portrait-bg.webp`}
             onError={(event) => event.currentTarget.classList.add("is-failed")}
             onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
           >
@@ -543,9 +543,9 @@ function Strengths() {
 
 function ContactIcon({ type }) {
   const icons = {
-    email: `${COS_ASSET_BASE}/contact-email-solid.png`,
-    wechat: `${COS_ASSET_BASE}/contact-wechat-solid.png`,
-    phone: `${COS_ASSET_BASE}/contact-phone-solid.png`,
+    email: `${COS_ASSET_BASE}/contact-email-solid.webp`,
+    wechat: `${COS_ASSET_BASE}/contact-wechat-solid.webp`,
+    phone: `${COS_ASSET_BASE}/contact-phone-solid.webp`,
   };
   return <img className="contact-icon" src={icons[type]} alt="" aria-hidden="true" />;
 }
@@ -691,3 +691,4 @@ export default function App() {
     </>
   );
 }
+
