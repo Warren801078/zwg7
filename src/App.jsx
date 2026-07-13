@@ -3,7 +3,7 @@ import Grainient from "./Grainient";
 import BorderGlow from "./BorderGlow";
 import SplitText from "./SplitText";
 
-const COS_ASSET_BASE = "https://zwg7-1311977854.cos.ap-guangzhou.myqcloud.com";
+const COS_ASSET_BASE = "https://ti3girklz.hd-bkt.clouddn.com";
 
 const profile = {
   name: "Zzz",
@@ -246,7 +246,7 @@ function Hero() {
             onError={(event) => event.currentTarget.classList.add("is-failed")}
             onLoadedData={(event) => event.currentTarget.play().catch(() => {})}
           >
-            <source src={`${COS_ASSET_BASE}/hero-background.mp4`} type="video/mp4" />
+            <source src={`${COS_ASSET_BASE}/hero-background-web.mp4`} type="video/mp4" />
           </video>
         )}
         <div className="motion-field" />
