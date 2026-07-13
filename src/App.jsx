@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Grainient from "./Grainient";
 import BorderGlow from "./BorderGlow";
 import SplitText from "./SplitText";
 
-const COS_ASSET_BASE = "https://ti3girklz.hd-bkt.clouddn.com";
+// Keep portfolio media on the same GitHub Pages origin.
+const COS_ASSET_BASE = "./assets";
 
 const profile = {
   name: "Zzz",
